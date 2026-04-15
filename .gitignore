@@ -17,5 +17,7 @@ Data_Preprocessing/Temp_data/*
 # ==========================================
 # 3. 未来的“特赦名单”（未来想传哪个，就把前面的 # 删掉）
 # ==========================================
-# !Data_Preprocessing/Temp_data/安全脱敏后的结果.csv
-# !Data_Preprocessing/Temp_data/30_Lab_Items_Mapping_For_Doctors_V6_Final.xlsx
+!Data_Preprocessing/Temp_data/22_pre_filter_words_list.md
+!Data_Preprocessing/Temp_data/37_results.md
+!Data_Preprocessing/Temp_data/38_results.md
+!Data_Preprocessing/Temp_data/48_results.md
