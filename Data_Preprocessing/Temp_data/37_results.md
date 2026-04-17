@@ -1,5 +1,4 @@
 ```
-(ortho) wugang@ubuntu-Super-Server:~/Data/Projects/Orthopedics/Data_Preprocessing/Script$ python 37_cross_reference_image_mapping.py 
 🚀 [37号] 启动影像映射双向审计...
 🔍 [审计结果]
    ✅ 两边都有的 (完美交集) : 7721 个

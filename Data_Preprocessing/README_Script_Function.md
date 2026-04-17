@@ -37,7 +37,7 @@
 | [`32_final_mapping_generator.py`](./Script/32_final_mapping_generator.py) | **核心规则**：综合防撞结果生成最终视觉排版无损检验指标映射大表。 | `31_lab_words_collision_detection.py` | `33_check_is_all_mapped.py`<br>`34_mapping_Deduplicating_and_find_collision.py` | ✅ |
 | [`33_check_is_all_mapped.py`](./Script/33_check_is_all_mapped.py) | 绝对壁垒审计：验证底表所有指标是否100%被字典收录。 | `32_final_mapping_generator.py` | - | |
 | [`34_mapping_Deduplicating_and_find_collision.py`](./Script/34_mapping_Deduplicating_and_find_collision.py) | **核心清洗**：执行四级漏斗强力清洗（去重/映射合并/致命硬剔除），输出极净检验长表。 | `32_final_mapping_generator.py` | `35_create_lab_wide_table.py` | ✅ |
-| [`35_create_lab_wide_table.py`](./Script/35_create_lab_wide_table.py) | **核心降维**：将清洗长表通过Pivot操作转换为ML-Ready稀疏大宽表。 | `34_mapping_Deduplicating_and_find_collision.py` | `38_5_way_patient_intersections.py` | ✅ |
+| [`35_create_lab_wide_table.py`](./Script/35_create_lab_wide_table.py) | **核心降维**：将清洗长表通过Pivot操作转换为ML-Ready稀疏大宽表。 | `34_mapping_Deduplicating_and_find_collision.py` | `38_5_way_patient_intersections.py`<br>`49_lab_indicator_macro_stats.py` | ✅ |
 | [`36_extract_dicom_modality_ids.py`](./Script/36_extract_dicom_modality_ids.py) | 物理盘点：抓取硬盘上真实存在的 DICOM 文件夹名。 | - | `37_cross_reference_image_mapping.py` | |
 | [`37_cross_reference_image_mapping.py`](./Script/37_cross_reference_image_mapping.py) | **核对枢纽**：执行硬盘物理存在与 HIS 账单的双向交集核对，生成合规交集底座。 | `36_extract_dicom_modality_ids.py` | `38_5_way_patient_intersections.py`<br>`39_3_modality_intersection.py` | ✅ |
 | [`38_5_way_patient_intersections.py`](./Script/38_5_way_patient_intersections.py) | 五维全景分析：影像、临床、护理、疼痛、化验的大满贯患者重合度统计。 | `25_reorder_source_raw_tables.py`<br>`35_create_lab_wide_table.py`<br>`37_cross_reference_image_mapping.py` | - | ✅ |
@@ -51,3 +51,4 @@
 | [`46_count_10_meta_data_table.py`](./Script/46_count_10_meta_data_table.py) | 统计最终10号清洗基底存活的总照片数。 | `10_clean_and_built_3_meta_table.py` | - | |
 | [`47_find_truth_wrong_logitic.py`](./Script/47_find_truth_wrong_logitic.py) | *历史遗留版本*：导致数据大规模“连坐误杀”的错误旧版交叉验证统计引擎。 | - | `48_new_47.py` | |
 | [`48_new_47.py`](./Script/48_new_47.py) | **核心基盘测试**：彻底修复连坐Bug的最新 UID **切片级**交叉核验引擎，成功保全全部合法患者。 | `10_clean_and_built_3_meta_table.py`<br>`22_new_from_18_14_check_unmatched_body_part.py` | - | ✅ |
+| [`49_lab_indicator_macro_stats.py`](./Script/49_lab_indicator_macro_stats.py) | **特征普查**：对检验大宽表的所有指标进行总检验频次与独立患者覆盖率的宏观统计，辅助特征工程筛选。 | `35_create_lab_wide_table.py` | - | ✅ |
