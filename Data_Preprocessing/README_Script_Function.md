@@ -13,7 +13,7 @@
 | [`07_see_threshold_result.py`](./Script/07_see_threshold_result.py) | 剔除私有标签，评估保留阈值在10%和50%时的特征存活率。 | `03_pre_try_extract_dicom_data.py` | `08_see_threshold_result_b.py` | |
 | [`08_see_threshold_result_b.py`](./Script/08_see_threshold_result_b.py) | 阶梯式（0~50%）测算非空阈值对公共特征保留数量的影响。 | `07_see_threshold_result.py` | `09_see_threshold_result_c.py` | |
 | [`09_see_threshold_result_c.py`](./Script/09_see_threshold_result_c.py) | 细化步长（0~100%）动态生成阈值留存测试报告。 | `08_see_threshold_result_b.py` | `10_clean_and_built_3_meta_table.py` | |
-| [`10_clean_and_built_3_meta_table.py`](./Script/10_clean_and_built_3_meta_table.py) | **核心基准**：应用5%非空阈值与私有标签剔除规则，生成三大模态(CT/MR/XRay)纯净元数据表。 | `03_pre_try_extract_dicom_data.py`<br>`09_see_threshold_result_c.py` | `11_check_body_part.py`<br>`14_check_unmatched_body_part.py`<br>`19_check_if_left_words.py`<br>`39_3_modality_intersection.py`<br>`50_single_Voxel_FEA_test.py` | ✅ |
+| [`10_clean_and_built_3_meta_table.py`](./Script/10_clean_and_built_3_meta_table.py) | **核心基准**：应用5%非空阈值与私有标签剔除规则，生成三大模态(CT/MR/XRay)纯净元数据表。 | `03_pre_try_extract_dicom_data.py`<br>`09_see_threshold_result_c.py` | `11_check_body_part.py`<br>`14_check_unmatched_body_part.py`<br>`19_check_if_left_words.py`<br>`39_3_modality_intersection.py`<br>`50_single_Voxel_FEA_test.py`,<br>`51_single_Voxel_FEA_test_fp16.py`<br>`55_get_dicom_words.py` | ✅ |
 | [`11_check_body_part.py`](./Script/11_check_body_part.py) | 对基准表执行部位相关字段（BodyPartExamined等）取值的频次普查。 | `10_clean_and_built_3_meta_table.py` | `12_check_body_keys_cover_range.py` | |
 | [`12_check_body_keys_cover_range.py`](./Script/12_check_body_keys_cover_range.py) | 计算不同部位识别字段对数据的增量联合覆盖率。 | `11_check_body_part.py` | `13_check_fuzzy_value.py` | |
 | [`13_check_fuzzy_value.py`](./Script/13_check_fuzzy_value.py) | 对CHEST、NECK等模糊部位进行深度采样与交叉印证。 | `12_check_body_keys_cover_range.py` | - | |
@@ -25,7 +25,7 @@
 | [`19_check_if_left_words.py`](./Script/19_check_if_left_words.py) | 初代双向兜底测试：寻找既不在白名单也不在黑名单的孤儿数据。 | `10_clean_and_built_3_meta_table.py` | `20_check_if_left_words_again.py` | |
 | [`20_check_if_left_words_again.py`](./Script/20_check_if_left_words_again.py) | 迭代双向兜底测试：更新黑白名单后的孤儿数据排查。 | `19_check_if_left_words.py` | `21_check_if_left_words_again_again.py` | |
 | [`21_check_if_left_words_again_again.py`](./Script/21_check_if_left_words_again_again.py) | 修复空值(NAN)判定Bug的终极兜底测试。 | `20_check_if_left_words_again.py` | `22_new_from_18_14_check_unmatched_body_part.py` | |
-| [`22_new_from_18_14_check_unmatched_body_part.py`](./Script/22_new_from_18_14_check_unmatched_body_part.py) | **核心黑名单**：基于最终黑白名单生成精确切片级废片列表。 | `18_new_from_14_check_unmatched_body_part.py`<br>`21_check_if_left_words_again_again.py` | `23_check_clean_data_if_all_words_nan.py`<br>`39_3_modality_intersection.py`<br>`48_new_47.py`<br>`50_single_Voxel_FEA_test.py` | ✅ |
+| [`22_new_from_18_14_check_unmatched_body_part.py`](./Script/22_new_from_18_14_check_unmatched_body_part.py) | **核心黑名单**：基于最终黑白名单生成精确切片级废片列表。 | `18_new_from_14_check_unmatched_body_part.py`<br>`21_check_if_left_words_again_again.py` | `23_check_clean_data_if_all_words_nan.py`<br>`39_3_modality_intersection.py`<br>`48_new_47.py`<br>`50_single_Voxel_FEA_test.py`<br>`51_single_Voxel_FEA_test_fp16.py` | ✅ |
 | [`23_check_clean_data_if_all_words_nan.py`](./Script/23_check_clean_data_if_all_words_nan.py) | 留存合规数据完整性校验，拦截全空盲盒。 | `22_new_from_18_14_check_unmatched_body_part.py` | - | |
 | [`25_reorder_source_raw_tables.py`](./Script/25_reorder_source_raw_tables.py) | **临床底盘**：按患者ID与时间维度对所有非检验临床表执行全局时序升序重排。 | - | `38_5_way_patient_intersections.py`<br>`41_create_full_inforamtion_grade_annotation_table.py` | ✅ |
 | [`26_lab_item_count.py`](./Script/26_lab_item_count.py) | 全量扫描三大检验表，输出包含数万检验频次的原始指标总字典。 | - | `27_lab_items_mapping.py` | |
@@ -53,3 +53,10 @@
 | [`48_new_47.py`](./Script/48_new_47.py) | **核心基盘测试**：彻底修复连坐Bug的最新 UID **切片级**交叉核验引擎，成功保全全部合法患者。 | `10_clean_and_built_3_meta_table.py`<br>`22_new_from_18_14_check_unmatched_body_part.py` | - | ✅ |
 | [`49_lab_indicator_macro_stats.py`](./Script/49_lab_indicator_macro_stats.py) | **特征普查**：对检验大宽表的所有指标进行总检验频次与独立患者覆盖率的宏观统计，辅助特征工程筛选。 | `35_create_lab_wide_table.py` | - | ✅ |
 | [`50_single_Voxel_FEA_test.py`](./Script/50_single_Voxel_FEA_test.py) | **终端压测**：集成2.0x重采样、4090 D力学演化、智能Bounding Box裁剪与HDF5无损验证的终极存储评测方案。 | `10_clean_and_built_3_meta_table.py`<br>`22_new_from_18_14_check_unmatched_body_part.py` | - | ✅ |
+| [`51_single_Voxel_FEA_test_fp16.py`](./Script/51_single_Voxel_FEA_test_fp16.py) | **精度压测**：针对1497例全量数据进行FP16极限压缩，评估精度损失与空间重构误差。 | `10_clean_and_built_3_meta_table.py` | `52_h5_to_nifti_visualizer.py` | ✅ |
+| [`52_h5_to_nifti_visualizer.py`](./Script/52_h5_to_nifti_visualizer.py) | **格式转换**：将HDF5保险箱数据转为NIfTI (.nii.gz)，解决Float16不兼容可视化软件的痛点。 | `50_benchmark_2_ultimate.py`<br>`51_single_Voxel_FEA_test_fp16.py` | `54_transfer2stl.py` | |
+| [`53_see_fast.py`](./Script/53_see_fast.py) | **快速比对**：生成FP32与FP16版本的MIP（最大密度投影）与中心切面对比图，直观验证压缩效果。 | `50_benchmark_2_ultimate.py`<br>`51_single_Voxel_FEA_test_fp16.py` | - | |
+| [`54_transfer2stl.py`](./Script/54_transfer2stl.py) | **傻瓜化导出**：将NIfTI转为STL格式，内置降采样逻辑以适配Windows原生3D查看器。 | `52_h5_to_nifti_visualizer.py` | - | |
+| [`55_get_dicom_words.py`](./Script/55_get_dicom_words.py) | **字段提取**：从10号清洗表中垂直提取所有DICOM关键字，用于分析坐标系偏移与物理参数。 | `10_clean_and_built_3_meta_table.py` | - | ✅ |
+| [`56_fast_export_3D_test.py`](./Script/56_fast_export_3D_test.py) | **极速预览版**：实现0.5x降采样、物理坐标系校准，快速导出不断层、不压扁的H5与STL双轨文件。 | `10_clean_and_built_3_meta_table.py` | `57_balanced_export_3D_test.py` | |
+| [`57_balanced_export_3D_test.py`](./Script/57_balanced_export_3D_test.py) | **最终验证版**：高清满血导出引擎。支持Float32、形态学闭运算愈合（补洞）、孤岛剔除与Taubin平滑。 | `10_clean_and_built_3_meta_table.py`<br>`55_get_dicom_words.py` | - | ✅ |
