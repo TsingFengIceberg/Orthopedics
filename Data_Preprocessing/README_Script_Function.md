@@ -60,3 +60,5 @@
 | [`55_get_dicom_words.py`](./Script/55_get_dicom_words.py) | **字段提取**：从10号清洗表中垂直提取所有DICOM关键字，用于分析坐标系偏移与物理参数。 | `10_clean_and_built_3_meta_table.py` | - | ✅ |
 | [`56_fast_export_3D_test.py`](./Script/56_fast_export_3D_test.py) | **极速预览版**：实现0.5x降采样、物理坐标系校准，快速导出不断层、不压扁的H5与STL双轨文件。 | `10_clean_and_built_3_meta_table.py` | `57_balanced_export_3D_test.py` | |
 | [`57_balanced_export_3D_test.py`](./Script/57_balanced_export_3D_test.py) | **最终验证版**：高清满血导出引擎。支持Float32、形态学闭运算愈合（补洞）、孤岛剔除与Taubin平滑。 | `10_clean_and_built_3_meta_table.py`<br>`55_get_dicom_words.py` | - | ✅ |
+| [`58_compare_3_zoom_factor.py`](./Script/58_compare_3_zoom_factor.py) | **多尺度重采样编译**：执行全局 DICOM 物理坐标系对齐，应用多精度缩放因子（1.0x/1.25x/1.5x）、形态学闭运算修复与最大连通域提取，分别导出无损高精度骨芯 HDF5 矩阵与 STL 网格。 | - | `59_compare_3_factor_FEA_result.py` | ✅ |
+| [`59_compare_3_factor_FEA_result.py`](./Script/59_compare_3_factor_FEA_result.py) | **GPU物理应力映射**：读取58号生成的各尺度HDF5，利用 CuPy 极速推演基于体素密度的杨氏模量与轴向应力场（含鲁棒性NaN修复），导出三维 VTK 应力场文件与 PNG 渲染快照。 | `58_compare_3_zoom_factor.py` | (后续衔接 60 号双流数据打包脚本) | ✅ |
