@@ -44,7 +44,7 @@
 | [`39_3_modality_intersection.py`](./Script/39_3_modality_intersection.py) | **核心统计**：利用UID切片级精确扣减引流，盘点三模态（Has_CT等）交集分布及包含组合。 | `10_clean_and_built_3_meta_table.py`<br>`22_new_from_18_14_check_unmatched_body_part.py`<br>`37_cross_reference_image_mapping.py` | - | ✅ |
 | [`40_create_fracture_grade_annotation_table.py`](./Script/40_create_fracture_grade_annotation_table.py) | 基于宽容UID过滤逻辑的极简骨折分级标注模板（仅含ID与空白列）生成器。 | `37_cross_reference_image_mapping.py` | - | |
 | [`41_create_full_inforamtion_grade_annotation_table.py`](./Script/41_create_full_inforamtion_grade_annotation_table.py) | **终极排版**：按首诊时间严格排序的多模态临床影像合并全景时间轴模板（搭载切片级精准过滤防线）。 | `25_reorder_source_raw_tables.py`<br>`37_cross_reference_image_mapping.py` | - | ✅ |
-| [`42_create_new_format_annotation_table.py`](./Script/42_create_new_format_annotation_table.py) | **终极排版**：支持视觉高亮的灵活分行全景模板，搭载防连坐UID精确过滤与临床汇总功能。 | `25_reorder_source_raw_tables.py`<br>`37_cross_reference_image_mapping.py` | - | ✅ |
+| [`42_create_new_format_annotation_table.py`](./Script/42_create_new_format_annotation_table.py) | **终极排版**：支持视觉高亮的灵活分行全景模板，搭载防连坐UID精确过滤与临床汇总功能。 | `25_reorder_source_raw_tables.py`<br>`37_cross_reference_image_mapping.py`<br>`60_find_longitudinal_cases.py` | - | ✅ |
 | [`43_find_image_patients_count_again.py`](./Script/43_find_image_patients_count_again.py) | 尝试性物理全量读取统计：由于只读头文件，用于印证CT数据的总盘。 | - | - | |
 | [`44_count_dicom_modality_again.py`](./Script/44_count_dicom_modality_again.py) | 第二次全物理扫描：强制读取（包括损坏头文件）以统计真实的医院模态构成。 | - | `45_find_image_patients_count_again_2.py` | |
 | [`45_find_image_patients_count_again_2.py`](./Script/45_find_image_patients_count_again_2.py) | 基于44号绝对快照表的模态宽容组合患者再次印证。 | `44_count_dicom_modality_again.py` | - | |
@@ -62,3 +62,5 @@
 | [`57_balanced_export_3D_test.py`](./Script/57_balanced_export_3D_test.py) | **最终验证版**：高清满血导出引擎。支持Float32、形态学闭运算愈合（补洞）、孤岛剔除与Taubin平滑。 | `10_clean_and_built_3_meta_table.py`<br>`55_get_dicom_words.py` | - | ✅ |
 | [`58_compare_3_zoom_factor.py`](./Script/58_compare_3_zoom_factor.py) | **多尺度重采样编译**：执行全局 DICOM 物理坐标系对齐，应用多精度缩放因子（1.0x/1.25x/1.5x）、形态学闭运算修复与最大连通域提取，分别导出无损高精度骨芯 HDF5 矩阵与 STL 网格。 | - | `59_compare_3_factor_FEA_result.py` | ✅ |
 | [`59_compare_3_factor_FEA_result.py`](./Script/59_compare_3_factor_FEA_result.py) | **GPU物理应力映射**：读取58号生成的各尺度HDF5，利用 CuPy 极速推演基于体素密度的杨氏模量与轴向应力场（含鲁棒性NaN修复），导出三维 VTK 应力场文件与 PNG 渲染快照。 | `58_compare_3_zoom_factor.py` | (后续衔接 60 号双流数据打包脚本) | ✅ |
+| [`60_find_longitudinal_cases.py`](./Script/60_find_longitudinal_cases.py) | **纵向黄金病例挖掘**：从42号灵活标注表中筛选出具有2次及以上住院记录且拥有多期CT影像的患者，生成带高级排版和颜色高亮显示的黄金病例清单。 | `42_Flexible_Row_Annotation_Template.xlsx` | `61_compare_pre_after_FEA_sample.py` | ✅ |
+| [`61_compare_pre_after_FEA_sample.py`](./Script/61_compare_pre_after_FEA_sample.py) | **纵向FEA对比全链路**：融合58/59号脚本逻辑，针对60号挖掘出的黄金病例执行1.25x重采样、骨芯提取与GPU应力映射，输出H5/STL/VTK/VTI多格式成果物，比较术前和术后再骨折应力分布的差别。 | `60_find_longitudinal_cases.py` | - | ✅ |
